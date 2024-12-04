@@ -100,10 +100,9 @@ def main():
     Основна функція для запуску бота
     """
     application = Application.builder().token(TELEGRAM_TOKEN).build()
-    dispatcher = application.dispatcher
 
     # Додати команду для встановлення інтервалу
-    dispatcher.add_handler(CommandHandler('setinterval', set_interval))
+    application.add_handler(CommandHandler('setinterval', set_interval))
 
     application.run_polling()
 
