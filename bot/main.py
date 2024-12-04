@@ -2,7 +2,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 from telegram import Bot
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
 # Замініть на свій токен та ID каналу
 TELEGRAM_TOKEN = '7690922097:AAEjmxo9BYyOdlYADSUw1JylKeKrVhM-rOE'
@@ -56,10 +56,9 @@ def format_match_info(match):
     """
     Форматування інформації про матч для публікації у Telegram
     """
-    return f"""🕒 *{match['time']}*
-🏆 *{match['team1']}* vs *{match['team2']}*
-🖼️ [Логотип {match['team1']}](https:{match['team1_logo']}) vs [Логотип {match['team2']}](https:{match['team2_logo']})"""
-
+    return (f"🕒 *{match['time']}*\n"
+            f"🏆 *{match['team1']}* vs *{match['team2']}*\n"
+            f"🖼️ [Логотип {match['team1']}](https:{match['team1_logo']}) vs [Логотип {match['team2']}](https:{match['team2_logo']})")
 
 def send_matches_to_channel():
     """
@@ -100,13 +99,13 @@ def main():
     """
     Основна функція для запуску бота
     """
-    updater = Updater(token=TELEGRAM_TOKEN, use_context=True)
-    dispatcher = updater.dispatcher
+    application = Application.builder().token(TELEGRAM_TOKEN).build()
+    dispatcher = application.dispatcher
 
     # Додати команду для встановлення інтервалу
     dispatcher.add_handler(CommandHandler('setinterval', set_interval))
 
-    updater.start_polling()
+    application.run_polling()
 
     while True:
         try:
