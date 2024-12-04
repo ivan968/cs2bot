@@ -5,8 +5,8 @@ from telegram import Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Замініть на свій токен та ID каналу
-TELEGRAM_TOKEN = 'your_telegram_bot_token'
-CHANNEL_ID = '@your_channel_name'
+TELEGRAM_TOKEN = '7690922097:AAEjmxo9BYyOdlYADSUw1JylKeKrVhM-rOE'
+CHANNEL_ID = '@kugisaki_n'
 
 # URL сайту HLTV для парсингу турнірів
 HLTV_URL = 'https://www.hltv.org/matches'
