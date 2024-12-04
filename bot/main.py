@@ -56,11 +56,10 @@ def format_match_info(match):
     """
     Форматування інформації про матч для публікації у Telegram
     """
-    return (f"🕒 *{match['time']}*
-"
-            f"🏆 *{match['team1']}* vs *{match['team2']}*
-"
-            f"🖼️ [Логотип {match['team1']}](https:{match['team1_logo']}) vs [Логотип {match['team2']}](https:{match['team2_logo']})")
+    return f"""🕒 *{match['time']}*
+🏆 *{match['team1']}* vs *{match['team2']}*
+🖼️ [Логотип {match['team1']}](https:{match['team1_logo']}) vs [Логотип {match['team2']}](https:{match['team2_logo']})"""
+
 
 def send_matches_to_channel():
     """
